@@ -1,17 +1,9 @@
 import React from 'react'
 import { Box ,Typography,List,ListItem,ListItemButton,ListItemIcon,ListItemText } from '@mui/material'
-import WidgetsOutlinedIcon from '@mui/icons-material/WidgetsOutlined';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import FilterFramesOutlinedIcon from '@mui/icons-material/FilterFramesOutlined';
-import DonutSmallOutlinedIcon from '@mui/icons-material/DonutSmallOutlined';
-import ShowChartOutlinedIcon from '@mui/icons-material/ShowChartOutlined';
-import FunctionsOutlinedIcon from '@mui/icons-material/FunctionsOutlined';
-import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import CategoryIcon from '@mui/icons-material/Category';
 import {Link} from "react-router-dom"
 const Sidebar = () => {
@@ -27,6 +19,15 @@ const Sidebar = () => {
                 </Box>
                 <nav>
                     <List>
+
+                    <ListItem sx={{':hover':{
+                            backgroundColor:'gray'
+                        }}}>
+                              <ListItemButton>
+                                  <ListItemIcon sx={{color:"white"}}><AccountCircleOutlinedIcon /></ListItemIcon>
+                                  <Link to="/account"><ListItemText primary="Tài khoản" /></Link>
+                              </ListItemButton>
+                          </ListItem>
                      
                           <ListItem sx={{':hover':{
                             backgroundColor:'gray'

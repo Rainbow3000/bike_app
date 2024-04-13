@@ -15,11 +15,14 @@ import {useSelector} from 'react-redux'
 import Category from './pages/Category/Category';
 import CategoryCreate from "./pages/Category/CategoryCreate";
 import CategoryUpdate from "./pages/Category/CategoryUpdate";
+import Account from './pages/account/Account'
 import {
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
+import CreateAccount from "./pages/account/CreateAccount";
+import UpdateAccount from "./pages/account/UpdateAccount";
 function App() {
   const {user} = useSelector(state=>state.user); 
   return (
@@ -35,6 +38,9 @@ function App() {
                       </Box>
                     <Routes>                
                         <Route path="/category" element={<Category/>}  />    
+                        <Route path="/account" element={<Account/>}  />    
+                        <Route path="/account/create" element={<CreateAccount/>}  />    
+                        <Route path="/account/update/:id" element={<UpdateAccount/>}  />    
                         <Route path="/" element={  <Product />} />  
                         <Route path="/product/create" element={ <CreateProduct/>} /> 
                         <Route path="/product/product-update/:id" element={ <ProductUpdate />} />

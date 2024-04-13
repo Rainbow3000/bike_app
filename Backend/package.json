@@ -18,7 +18,7 @@
     "xlsx": "^0.18.5"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "test": "jest --watch"
   },
   "author": "",

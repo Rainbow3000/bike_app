@@ -3,8 +3,9 @@ import {Paper,Box} from '@mui/material'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useDispatch,useSelector } from 'react-redux';
 import './userChart.scss'
+import { publicRequest } from '../../requestMethod';
 const UserChart = () => {
-    const {userStat} = useSelector(state=>state.user); 
+    const [data,setData] = useState([]); 
     const dispatch = useDispatch();   
     const MONTHS = useMemo(()=>[
         "January",
@@ -21,9 +22,26 @@ const UserChart = () => {
         "December"
     ])
 
-    const data = userStat.map((item,index)=>{
-        return {name:MONTHS[item._id -1 ], activeUser:item.quantity}
-    })
+ 
+
+
+    const getUserStat = async()=>{
+        try {
+            const {data} = await publicRequest.get('/user/userStat'); 
+            const userData = data.map((item,index)=>{
+                return {name:MONTHS[item._id -1 ], activeUser:item.quantity}
+            })
+            setData(userData);
+        
+        } catch (error) {
+            
+        }
+    }
+
+
+    useEffect(()=>{
+        getUserStat(); 
+    },[])
    
   return (
         <Box sx={{width:"100%",flex:1,display:'flex',justifyContent:'center',alignItems:'center'}}>

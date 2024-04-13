@@ -20,11 +20,9 @@ module.exports = {
         })
     }, 
     updateUser:({userId,data})=>{
-        const hashPassword = CryptoJS.AES.encrypt(data.password, process.env.AES_SECRET).toString(); 
-        data.password = hashPassword; 
         return new Promise(async(resolve,reject)=>{
             try {
-                const user = await User.findOneAndUpdate({_id:userId},req.body,{new:true}); 
+                const user = await User.findOneAndUpdate({_id:userId},data,{new:true}); 
                 const {password,...others} = user._doc; 
                 resolve(others)
             } catch (error) {
@@ -36,7 +34,7 @@ module.exports = {
     deleteUser:(userId)=>{
         return new Promise(async(resolve,reject)=>{
             try {
-                const user = await User.findById({_id:userId}); 
+                const user = await User.findByIdAndDelete({_id:userId}); 
                 const {password,...others} = user._doc; 
                 resolve(others); 
             } catch (error) {
